@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, {ReactNode, useState } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 import Navbar from '@/components/Navbar';
 import { Inter } from "next/font/google";
@@ -7,7 +7,11 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+function RootLayout({ children }: RootLayoutProps) {
   const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
