@@ -26,6 +26,8 @@ interface Contact {
   phone: string;
   website: string;
   company: Company;
+  [key: string]: any  // If you know the possible types
+
 }
 
 export default Contact;

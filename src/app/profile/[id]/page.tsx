@@ -18,7 +18,7 @@ const Profile = ({ params }: { params: any }) => {
   const id = params.id;
   const [user, setUser] = useState<Contact>()
   const { theme, toggleTheme } = React.useContext(ThemeContext);
-  const mapRef = useRef();
+  const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (id) {
