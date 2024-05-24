@@ -84,33 +84,6 @@ const Home = () => {
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage)
   const currentContacts = filteredContacts.slice(indexOfFirstContact, indexOfLastContact)
 
-  // render loading skeleton if contacts is empty
-  if (contacts.length === 0) {
-    return (
-      <Table className={`mx-6 ${theme === 'light' ? '' : 'text-slate-300 bg-slate-900'}`}>
-        <TableHeader>
-          <TableRow>
-            <TableHead>
-              <Skeleton className="rounded-lg">
-                <div className="h-3 w-full rounded-lg bg-secondary"></div>
-              </Skeleton>
-            </TableHead>
-            <TableHead>
-              <Skeleton className="rounded-lg">
-                <div className="h-3 w-full rounded-lg bg-secondary"></div>
-              </Skeleton>
-            </TableHead>
-            <TableHead>
-              <Skeleton className="rounded-lg">
-                <div className="h-3 w-full rounded-lg bg-secondary"></div>
-              </Skeleton>
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-      </Table>
-    );
-  }
-
   return (
     <div className={`min-h-screen ${theme === 'light' ? 'bg-white' : 'bg-slate-900'}`}>
       <div className="flex flex-col items-center">
@@ -163,45 +136,55 @@ const Home = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {currentContacts.map(contact => (
-            <TableRow key={contact.id}>
-              <TableCell className="py-5">
-                <Link href={`/profile/${contact.id}`}>
-                  {contact.name}
-                </Link>
-              </TableCell>
-              <TableCell className="py-5">
-                <Link href={`/profile/${contact.id}`}>
-                  {contact.username}
-                </Link>
-              </TableCell>
-              <TableCell className="py-5">
-                <Link href={`/profile/${contact.id}`}>
-                  {contact.email}
-                </Link>
-              </TableCell>
-              <TableCell className="py-5">
-                <Link href={`/profile/${contact.id}`}>
-                  {contact.phone}
-                </Link>
-              </TableCell>
-              <TableCell className="py-5">
-                <Link href={`/profile/${contact.id}`}>
-                  {contact.website}
-                </Link>
-              </TableCell>
-              <TableCell className="py-5">
-                <Link href={`/profile/${contact.id}`}>
-                  {contact.company.name}
-                </Link>
-              </TableCell>
-              <TableCell className="py-5">
-                <Link href={`/profile/${contact.id}`}>
-                  {`${contact.address.street}, ${contact.address.suite}, ${contact.address.city}, ${contact.address.zipcode}`}
-                </Link>
+          {contacts.length === 0 ? (
+            <TableRow>
+              <TableCell>
+                <Skeleton className="rounded-lg">
+                  <div className="h-3 w-full rounded-lg bg-secondary"></div>
+                </Skeleton>
               </TableCell>
             </TableRow>
-          ))}
+          ) : (
+            currentContacts.map(contact => (
+              <TableRow key={contact.id}>
+                <TableCell className="py-5">
+                  <Link href={`/profile/${contact.id}`}>
+                    {contact.name}
+                  </Link>
+                </TableCell>
+                <TableCell className="py-5">
+                  <Link href={`/profile/${contact.id}`}>
+                    {contact.username}
+                  </Link>
+                </TableCell>
+                <TableCell className="py-5">
+                  <Link href={`/profile/${contact.id}`}>
+                    {contact.email}
+                  </Link>
+                </TableCell>
+                <TableCell className="py-5">
+                  <Link href={`/profile/${contact.id}`}>
+                    {contact.phone}
+                  </Link>
+                </TableCell>
+                <TableCell className="py-5">
+                  <Link href={`/profile/${contact.id}`}>
+                    {contact.website}
+                  </Link>
+                </TableCell>
+                <TableCell className="py-5">
+                  <Link href={`/profile/${contact.id}`}>
+                    {contact.company.name}
+                  </Link>
+                </TableCell>
+                <TableCell className="py-5">
+                  <Link href={`/profile/${contact.id}`}>
+                    {`${contact.address.street}, ${contact.address.suite}, ${contact.address.city}, ${contact.address.zipcode}`}
+                  </Link>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
       <div className="flex justify-center my-4">

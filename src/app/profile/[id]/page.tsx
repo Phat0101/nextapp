@@ -61,61 +61,43 @@ const Profile = ({ params }: { params: any }) => {
     }
   }, [user, mapRef])
 
-  // render skeleton while loading
-  if (!user) {
-    return (
-      <Card className={`shadow-lg rounded-lg ${theme === 'light' ? 'bg-white' : 'bg-slate-800 text-slate-300'}`}>
-        <CardHeader>
-          <CardTitle>
-            <Skeleton className="rounded-lg">
-              <div className="h-3 w-full rounded-lg bg-secondary"></div>
-            </Skeleton>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CardDescription>
-            <Skeleton className="rounded-lg">
-              <div className="h-3 w-full rounded-lg bg-secondary"></div>
-            </Skeleton>
-          </CardDescription>
-          <CardDescription>
-            <Skeleton className="rounded-lg">
-              <div className="h-3 w-full rounded-lg bg-secondary"></div>
-            </Skeleton>
-          </CardDescription>
-          <CardDescription>
-            <Skeleton className="rounded-lg">
-              <div className="h-3 w-full rounded-lg bg-secondary"></div>
-            </Skeleton>
-          </CardDescription>
-          <CardDescription>
-            <Skeleton className="rounded-lg">
-              <div className="h-3 w-full rounded-lg bg-secondary"></div>
-            </Skeleton>
-          </CardDescription>
-        </CardContent>
-      </Card>
-    );
-  }
-
   return (
     <div className={`min-h-screen p-6 grid grid-cols-2 gap-4 ${theme === 'light' ? 'bg-white text-black' : 'bg-slate-900 text-slate-300'}`}>
       <div className="col-span-1">
         <Card className={`shadow-lg rounded-lg ${theme === 'light' ? 'bg-white' : 'bg-slate-800 text-slate-300'}`}>
           <CardHeader>
-            <CardTitle className="text-2xl font-bold">{user.name}</CardTitle>
+            <CardTitle className="text-2xl font-bold">
+              {user ? user.name : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>{user.username}</CardDescription>
-            <CardDescription>{user.email}</CardDescription>
-            <CardDescription>{user.phone}</CardDescription>
-            <CardDescription>{user.website}</CardDescription>
+            <CardDescription>
+              {user ? user.username : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardDescription>
+            <CardDescription>
+              {user ? user.email : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardDescription>
+            <CardDescription>
+              {user ? user.phone : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardDescription>
+            <h2 className="font-bold">Website</h2>
+            <CardDescription>
+              {user ? user.website : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardDescription>
             <h2 className="font-bold">Address</h2>
-            <CardDescription>{`${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}`}</CardDescription>
+            <CardDescription>
+              {user ? `${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}` : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardDescription>
             <h2 className="font-bold">Company</h2>
-            <CardDescription>{user.company.name}</CardDescription>
-            <CardDescription>{user.company.catchPhrase}</CardDescription>
-            <CardDescription>{user.company.bs}</CardDescription>
+            <CardDescription>
+              {user ? user.company.name : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardDescription>
+            <CardDescription>
+              {user ? user.company.catchPhrase : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardDescription>
+            <CardDescription>
+              {user ? user.company.bs : <Skeleton className="rounded-lg"><div className="h-3 w-full rounded-lg bg-secondary"></div></Skeleton>}
+            </CardDescription>
           </CardContent>
         </Card>
       </div>
