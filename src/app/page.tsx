@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import { Skeleton } from '@nextui-org/react'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 import { Input } from '@/components/ui/input'
 import { motion } from 'framer-motion'
@@ -82,6 +83,33 @@ const Home = () => {
   const indexOfFirstContact = indexOfLastContact - contactsPerPage
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage)
   const currentContacts = filteredContacts.slice(indexOfFirstContact, indexOfLastContact)
+
+  // render loading skeleton if contacts is empty
+  if (contacts.length === 0) {
+    return (
+      <Table className={`mx-6 ${theme === 'light' ? '' : 'text-slate-300 bg-slate-900'}`}>
+        <TableHeader>
+          <TableRow>
+            <TableHead>
+              <Skeleton className="rounded-lg">
+                <div className="h-3 w-full rounded-lg bg-secondary"></div>
+              </Skeleton>
+            </TableHead>
+            <TableHead>
+              <Skeleton className="rounded-lg">
+                <div className="h-3 w-full rounded-lg bg-secondary"></div>
+              </Skeleton>
+            </TableHead>
+            <TableHead>
+              <Skeleton className="rounded-lg">
+                <div className="h-3 w-full rounded-lg bg-secondary"></div>
+              </Skeleton>
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+      </Table>
+    );
+  }
 
   return (
     <div className={`min-h-screen ${theme === 'light' ? 'bg-white' : 'bg-slate-900'}`}>
