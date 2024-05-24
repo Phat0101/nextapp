@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Website link
+(https://nextapp-opal-delta.vercel.app/)
+
 ## Getting Started
 
 Fist, install all dependecies
@@ -20,6 +23,25 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
+Root Layout at `src/app/layout.tsx`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Contacts homepage at `src/app/page.tsx`
+
+Each profile at `src/app/profile/[id]/page.tsx`
+
+Navigation component at `src/components/Navbar.tsx`
+
+## Features
+- Search
+- Sorting by name, username, email, phone, etc;
+- Toggle dark mode (everyone needs it nowsday)
+- Pagination (if more rows)
+- View location by map
+
+## Dependencies and External Libraries
+- tailwindcss
+- react-icons
+- Shadcn
+- framer-motion
+- nextui-org
